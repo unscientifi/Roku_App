@@ -4,11 +4,12 @@ footer {
     width: 100%;
     height: 100px;
     // line-height: 60px;
-    background-color: $dark-bg;
+    background-color: $darkest;
 
     p { 
         display: inline-block;
         padding-left: 1em;
+        color:white;
         @include vertical-align();
     }
 
@@ -22,7 +23,7 @@ footer {
 			font-size: 2.5em;
 			display: inline-block;
 			margin-right: 0.4em;
-			color: rgba(255, 255, 255, 0.3);
+			color: white;
 		}
 	}
 }
