@@ -1,21 +1,44 @@
-# Roku_App
-This is a group project for MMED_5006 at Fanshawe College. We are building a mobile-first responsive app called Roku Flashback. The app allows users to access videos and filter different content. There are two categories: Adults and Kids. The content will be retrieved from a database via AJAX.
+# Roku Flashback Project
 
-## Authors
-* **Yasmina Tavares** (https://github.com/yasminamayot)
-* **Ryan (Anqi) Sun** (https://github.com/unscientifi)
+### Take a trip back to yesteryear with your old audio, tv and film faves!
+
+#### Setup
+You have some options - Docker, or old school. 
+
+If you're using a traditional PHP platform, then clone the repo to your localhost location (htdocs, www directory or wherever your local server expects to find your files).
+
+This is built with PHP on the back end, so you can either install the db_movies database with the tool of your choice, or drop the crutches and use the command line!. Configure your connection settings and you're ready to go.
+
+Or you can let Docker do its thing.  
+
+If you don't have Docker installed, you'll need to get it [here](http://www.docker.com).
+
+CD into the project directory and run docker-compose up  
+When you're done, run docker-compose down
+
+Your app is running on http://localhost:8010  
+phpmyadmin is running on http://localhost:8011
 
 
-## Built With
-* [Bootstrap](https://getbootstrap.com) - Responsive Front-End Framework
-* [Sass](https://sass-lang.com/ "Sass") - Syntactically Awesome Style Sheets
-* [mySQL](https://mysql.com") - Database
-* [Vue.js](https://vuejs.org) - JavaScript Framework
+#### Dependencies:
+We've rolled our own PHP - no frameworks, just some classes and a bit of procedural code.
 
+We use Vue on the front end, but not the CLI or webpack - just Vue with ES6 modules. Also - no jQuery, just plain old JavaScript.
 
-## Things We Wanted to Achieve
-- [x] Responsive website via Bootstrap and VUE
-- [x] Database driven content via AJAX
-- [x] User functionality via PHP
+We use Gulp for tooling - check <code>gulpfile.js</code> for reference. NPM install should get you up and running with your dev tools.
 
+We also use SASS.
 
+#### Built with:
+Vue (bare bones - no webpack!)
+
+vue-router
+
+Boostrap 4
+
+PHP
+
+JavaScript
+
+#### Authors / Dev Team:
+TVR and SpiderPan

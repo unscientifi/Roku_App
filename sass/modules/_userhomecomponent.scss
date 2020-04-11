@@ -36,7 +36,7 @@
         }
     }
 
-    li:hover span:first-of-type { color: $roku-purple }
+    li:hover span:first-of-type { color: $roku-yellow }
 }
 
 // genre filter links
@@ -56,7 +56,7 @@
             text-decoration: none;
         }
         
-        a:hover { color: $roku-purple; }
+        a:hover { color: $roku-yellow; }
     }
 
     li::after {
@@ -99,3 +99,20 @@ audio {
     bottom: 12%;
     opacity: 0.8;
 }
+
+
+.genre-heading {
+    font-size: 1em;
+    color: white;
+    margin: 0 1em 0 4em !important;
+    text-align: center;
+    cursor: pointer;
+  }
+
+.genre-heading h1 {
+    margin-right: 1.5em;
+}
+
+.media-genres {
+    text-align: center;
+}  

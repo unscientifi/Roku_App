@@ -4,11 +4,13 @@ html { position: relative; min-height: 100%; }
 
 body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	background-color: black;
-	color: white;
+	background-color: $darkest;
+	color: #222222;
 	margin-bottom: 100px;
-	background: url(../images/gunmetal.jpg) repeat;
+	// background: url(../images/posters.jpg);
 }
+	
+
 
 a {
 	color: #00B7FF;
@@ -16,11 +18,12 @@ a {
 }
 
 header {
-	background-color:$dark-bg;
+	background-color: $darkest;
 	padding: 12px 14px;
 	position: fixed;
 	z-index: 500;
 	width: 100%; 
+	margin: 1em 0 0 1em;
 
 	span {
 		margin-left: 15px;
@@ -30,6 +33,7 @@ header {
 		position: relative;
 		top: 5px;
 	}
+
 }
 
 nav:not(.side-nav) {
@@ -40,9 +44,10 @@ nav:not(.side-nav) {
 
 		li {
 			display: inline-block;
-			font-size: 1.75em;
-			padding: 0 0.2em;
+			font-size: 2em;
+			margin-right: 0.7em;
 			cursor: pointer;
+			color: white;
 		}
 	}
 }
@@ -52,7 +57,7 @@ nav:not(.side-nav) {
 	right: 1em;
 	top: 4.25rem;
 	z-index: 200;
-	color: #333;
+	// color: #333;
 	min-width: 175px;
 
 	.toast-body {
@@ -70,4 +75,8 @@ nav:not(.side-nav) {
 	font-size: 2.25rem;
 }
 
-.user-message { text-align: center; font-size: 2rem; }
+.user-message { 
+	text-align: center; 
+	font-size: 2rem; 
+}
+
