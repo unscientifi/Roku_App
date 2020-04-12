@@ -19,12 +19,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<header class="col-sm-12">
-				<img src="images/roku_logo4.svg" alt="Roku logo" width="200" to="/">
+				<img src="images/roku_logo4.svg"alt="Roku logo" width="200" to="/">
 				<nav class="float-right">
 				<ul>
-					<!-- <li>Kids</li> -->            
-					<li v-if="authenticated"><i class="fas fa-user-circle"></i></li>
-					<li v-if="administrator"><i class="fas fa-cog"></i></li>
+          
+					<li v-if="authenticated"> 
+						<router-link to="/users"><i class="fas fa-user-circle"></i></router-link></li>
+					<li v-if="administrator" class="kidsHide"><i class="fas fa-cog"></i></li>
 					<li v-if="authenticated" v-on:click="logout()"><i class="fas fa-power-off"></i></li>					
 				</ul>
 				</nav>

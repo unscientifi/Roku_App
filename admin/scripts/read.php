@@ -4,7 +4,7 @@
 
         include('connect.php');
 
-        $queryAll = 'SELECT * FROM '.$tbl;
+        $queryAll = "SELECT * FROM $tbl";
         $runAll = $pdo->query($queryAll);
 
         $result = array();
@@ -16,6 +16,25 @@
         return $result;
 
         }
+
+
+    // get kids content
+    function getKidsAll($tbl){
+
+            include('connect.php');
+    
+            $queryKidsAll = "SELECT * FROM $tbl WHERE $col4 = 'Family'";
+            $runKidsAll = $pdo->query($queryKidsAll);
+    
+            $result = array();
+    
+            while($row = $runKidsAll->fetch(PDO::FETCH_ASSOC)) {
+                $result[] = $row;
+            }
+    
+            return $result;
+    
+            }
 
 
     function getSingle($tbl, $col, $value){
@@ -32,6 +51,24 @@
             return $error;
         }
     }
+
+
+// kids filter
+    // function getKidsSingle($tbl, $col4){
+
+    //     include('connect.php');
+    //     $queryKidsSingle = 'SELECT * FROM '.$tbl.' WHERE '.$col4.' = Family';
+    //     //var_dump($querySingle);
+    //     $runKidsSingle = $pdo->query($queryKidsSingle);
+    //     if ($runKidsSingle){
+    //         return $runKidsSingle;
+    //     } else {
+
+    //         $error = 'There was a problem';
+    //         return $error;
+    //     }
+    // }
+
 
     function filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter) {
         include('connect.php');

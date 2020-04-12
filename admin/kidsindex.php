@@ -18,17 +18,9 @@
             $tbl3 = 'tbl_audio_year';
             $col = 'audio_id';
         }
-    }
-    if(isset($_GET['filter'])){
-             //$tbl = 'tbl_movies';
-             $tbl2 = 'tbl_year';
-             $col2 = 'year_id';
-             $col3 = 'year_name';
-             $filter = $_GET['filter'];
-        $results = filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter);
-        echo json_encode($results);
     } else {
-        $results = getAll($tbl);
+        //get kids
+        $results = getKidsAll($tbl);
         echo json_encode($results);
-    }
+    } 
 ?>
