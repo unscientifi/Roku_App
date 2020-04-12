@@ -6,9 +6,10 @@
 
 // top left media details
 .media-title { 
-    font-size: 1.5em; 
-    padding-top: 1em;
+    font-size: 2.5em; 
+    margin-top: 2em;
     font-weight: bolder; 
+    color: $roku-yellow;
 }
 
 .media-details { font-size: 1.2em; padding: 0.5em 0; }
@@ -104,15 +105,19 @@ audio {
 .genre-heading {
     font-size: 1em;
     color: white;
-    margin: 0 1em 0 4em !important;
+    margin: 0 1em 0 3.5em !important;
     text-align: center;
     cursor: pointer;
   }
 
-.genre-heading h1 {
-    margin-right: 1.5em;
+.genre-heading h2 {
+    clear: both;
 }
 
 .media-genres {
     text-align: center;
 }  
+
+.thumb-wrapper {
+    margin: 2em 0 3em 3em;
+}

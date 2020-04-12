@@ -1,5 +1,5 @@
 <?php
-    require_once '../load.php';
+    require_once('../admin/scripts/config.php');
     if (isset($_GET['media'])) {
         $type = $_GET['media'];
         if ($type == "video") {
@@ -18,6 +18,7 @@
         }
     }
     if(isset($_GET['filter'])){
+             //$tbl = 'tbl_movies';
              $tbl2 = 'tbl_year';
              $col2 = 'year_id';
              $col3 = 'year_name';

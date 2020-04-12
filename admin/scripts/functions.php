@@ -1,8 +1,10 @@
-<?php 
+<?php
 
-function redirect_to($location){
-    if($location != null){
-        header("Location: ".$location);
-        exit;
-    }
+function redirect_to($location) {
+    // echo 'inside redirect';exit;
+  if($location != NULL ) {
+    // var_dump($location);
+    header('Location: '.$location);
+    exit();
+  }
 }

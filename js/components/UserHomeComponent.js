@@ -5,52 +5,18 @@ export default {
   
 
     <div class="container">
-        <div class="row" v-if="activeMediaType == 'video' && retrievedMediaInfo.length > 0">
 
-            <div class="media-bg"><h2 class="media-title">{{ currentMediaInfo.movies_title }}</h2></div>
+    <div class="row">
+    <div v-for="media in mediaTypes" :data-type="media.alt" @click="loadMedia(null, media.alt)" class="genre-heading col-2 center"><hr>
+        <h1>
+          &nbsp &nbsp  <img :src="'images/' + media.icon" :alt="media.name" :width="70">
+        </h1>
+        <h2>&nbsp {{ media.name }}&nbsp &nbsp</h2><hr>
+    </div>
+    </div>
 
-                <iframe id="ytplayer" type="text/html" width="100%" height="600px"
-              :src="currentMediaInfo.movies_trailer"
-              frameborder="0"></iframe>
+   
 
-
-            </div>
-
-        
-
-        <div class="row" v-if="activeMediaType == 'television' && retrievedMediaInfo.length > 0">
-
-              <h2 class="media-title">{{currentMediaInfo.tv_name}}</h2>
-
-
-            <iframe id="ytplayer" type="text/html" width="100%" height="600px"
-    :src="currentMediaInfo.tv_trailer"
-    frameborder="0"></iframe>
-
-        </div>
-        
-
-
-        <div class="row" v-if="activeMediaType == 'audio' && retrievedMediaInfo.length > 0">
-            <div class="col-12 order-2 order-md-1 col-md-6 media-container">
-                <h2 class="media-title">{{ currentMediaInfo.audio_name }}</h2>
-
-            </div>
-            <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
-                <audio autoplay controls :src="'audio/' + currentMediaInfo.audio_source"/>
-
-            </div>
-        </div>
-
-        <div class="row">
-        <div v-for="media in mediaTypes" :data-type="media.alt" @click="loadMedia(null, media.alt)" class="genre-heading col-2 center"><hr>
-            <h1>
-              &nbsp &nbsp  <img :src="'images/' + media.icon" :alt="media.alt" :width="70">
-            </h1>
-            <h2>&nbsp {{ media.alt }}&nbsp &nbsp</h2><hr>
-        </div>
-        </div>
-    
     
                     <ul class="media-genres" v-if="activeMediaType == 'video'" >
                         <li>
@@ -112,11 +78,49 @@ export default {
                             <a href="all" @click.prevent="loadMedia(null, null)">All</a>
                         </li>
                     </ul>
+
+
                 <div class="thumb-wrapper clearfix">
                     <img v-if="activeMediaType == 'video'" v-for="media in retrievedMediaInfo" :src="'images/video/' + media.movies_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded float-left media-thumb">
                     <img v-if="activeMediaType == 'television'" v-for="media in retrievedMediaInfo" :src="'images/tv/' + media.tv_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded float-left media-thumb">
                     <img v-if="activeMediaType == 'audio'" v-for="media in retrievedMediaInfo" :src="'images/audio/' + media.audio_cover" alt="media thumb" @click="switchActiveMedia(media)" class="img-thumbnail rounded float-left media-thumb audio-thumb">
                 </div>
+
+                <div class="row" v-if="activeMediaType == 'video' && retrievedMediaInfo.length > 0">
+
+                <div class="media-bg"><h2 class="media-title">{{ currentMediaInfo.movies_title }}</h2></div>
+    
+                    <iframe id="ytplayer" type="text/html" width="100%" height="600px"
+                  :src="currentMediaInfo.movies_trailer"
+                  frameborder="0"></iframe>
+    
+                </div>
+    
+    
+            <div class="row" v-if="activeMediaType == 'television' && retrievedMediaInfo.length > 0">
+    
+                  <h2 class="media-title">{{currentMediaInfo.tv_name}}</h2>
+    
+                <iframe id="ytplayer" type="text/html" width="100%" height="600px"
+        :src="currentMediaInfo.tv_trailer"
+        frameborder="0"></iframe>
+    
+            </div>
+            
+    
+            <div class="row" v-if="activeMediaType == 'audio' && retrievedMediaInfo.length > 0">
+                <div class="col-12 order-2 order-md-1 col-md-6 media-container">
+                    <h2 class="media-title">{{ currentMediaInfo.audio_name }}</h2>
+    
+                </div>
+                <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
+                    <audio autoplay controls :src="'audio/' + currentMediaInfo.audio_source"/>
+    
+                </div>
+            </div>
+    
+
+
             </div>
         </div>
     `,
