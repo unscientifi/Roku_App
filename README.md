@@ -18,4 +18,7 @@ This is a group project for MMED_5006 at Fanshawe College. We are building a mob
 - [x] Database driven content via AJAX
 - [x] CMS and User functionality
 
+## Things We Didn't Make it Perfect
+- [x] Kids Page Filtering
+- [x] Admin
 
