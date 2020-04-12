@@ -1,59 +1,21 @@
-![Roku Flashback logo](https://github.com/shadiaali/Ali_S_AV_App/blob/master/images/peng.png)
+# Roku_App
+This is a group project for MMED_5006 at Fanshawe College. We are building a mobile-first responsive app called Roku Flashback. The app allows users to access videos and filter different content. There are two categories: Parents and Kids. The content will be retrieved from a database via AJAX.
 
-
-# Audio/Video App
-
- An audio / video app built using queries and database assets.  A user is able to log in, filter and select a movie, tv show or audio to stream based on decade/era.  
-
-## Getting Started
-
-### Prerequisites
-
-You’ll need Git.
-[See detailed install instructions here.](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
-
-### Installing
-
-From terminal:
-
-```# Initialize git
-
-$ git init
-
-# Clone this repository
-
-$ git clone https://github.com/shadiaali/Ali_S_AV_App.git
-
-# Go into the repository
-
-$ cd Ali_S_AV_App.git
-
-```
-
-Open the folder in your command line, and install the needed dependencies:
-
-```bash
-cd Ali_S_AV_App
-npm install
-```
-
-Finally, run `gulp` to run the Sass compiler. Don't forget to import to a new database called `db_av_app`.
-
-
-## Future Development
-
-* Figure out how to integrate Pan's Back-end with Vue
-* Make use of [vue-router-permissions](https://www.npmjs.com/package/vue-router-permissions) plugin to protect routes based on user permissions
+## Authors
+* **Yasmina Tavares** (https://github.com/yasminamayot)
+* **Ryan (Anqi) Sun** (https://github.com/unscientifi)
 
 
 ## Built With
+* [Bootstrap](https://getbootstrap.com) - Responsive Front-End Framework
+* [Sass](https://sass-lang.com/ "Sass") - Syntactically Awesome Style Sheets
+* [mySQL](https://mysql.com") - Database
+* [Vue.js](https://vuejs.org) - JavaScript Framework
 
-* [Gulp](https://gulpjs.com/)
-* [SASS](https://sass-lang.com/)
-* [Vue.js](https://vuejs.org/)
-* [Bootstrap](https://bootstrap.com/)
-* [Git](https://git-scm.com/)
 
-## Authors
+## Things We Wanted to Achieve
+- [x] Responsive website via Bootstrap and VUE
+- [x] Database driven content via AJAX
+- [x] CMS and User functionality
 
-* Shadia Ali
+
