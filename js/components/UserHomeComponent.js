@@ -114,7 +114,7 @@ export default {
     
                 </div>
                 <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
-                    <audio autoplay controls :src="'audio/' + currentMediaInfo.audio_source"/>
+                    <audio autoplay controls :src="'images/audio/' + currentMediaInfo.audio_source"/>
     
                 </div>
             </div>
