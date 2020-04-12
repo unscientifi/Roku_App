@@ -47,7 +47,7 @@ require_once('connect.php');
 
       $user['id'] = $found_user['user_id'];
       $user['username'] = $found_user['user_name'];
-      $user['admin'] = $found_user['user_admin'];
+      $user['admin'] = $found_user['user_isadmin'];
       $user['access'] = $found_user['user_access'];
 
       // add any other non-sensitive details here...

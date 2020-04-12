@@ -3,6 +3,7 @@ import UserComponent from './components/UserComponent.js';
 import LoginComponent from './components/LoginComponent.js';
 import AllUsersComponent from './components/AllUsersComponent.js';
 import UserHomeComponent from './components/UserHomeComponent.js';
+import KidsHomeComponent from './components/KidsHomeComponent.js';
 
 let router = new VueRouter({
 
@@ -10,7 +11,8 @@ let router = new VueRouter({
       { path: '/', redirect: { name: "login"} },
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/users', name: 'users', component: AllUsersComponent },
-      { path: '/userhome', name: 'home', component: UserHomeComponent, props: true }
+      { path: '/userhome', name: 'home', component: UserHomeComponent, props: true },
+      { path: '/kids', name: 'kids', component: KidsHomeComponent, props: true }
   ]
 });
 

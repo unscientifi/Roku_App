@@ -1,6 +1,6 @@
 .fs-video { width: 100% }
 
-.media-container { background: darken($dark-bg, 15%)}
+.media-container { background: darken($dark-bg, 15%);}
 .media-container:first-of-type { padding-bottom: 1em; }
 .media-container:last-of-type { padding-left: 0; padding-right: 0; }
 
@@ -120,4 +120,5 @@ audio {
 
 .thumb-wrapper {
     margin: 2em 0 3em 3em;
+    cursor: pointer;
 }

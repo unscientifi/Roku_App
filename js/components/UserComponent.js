@@ -6,7 +6,7 @@ export default {
         <div class="cards rounded" @click="navToUserHome()">
             <div class="card-body text-center">
                 <img :src="'images/user/' + liveuser.avatar" class=" img-fluid">
-                <h3 class="userName">{{ liveuser.uname }}</h3>
+                <h3 class="userName">{{ liveuser.username }}</h3>
             </div>
         </div>
     </div>`,
@@ -20,9 +20,13 @@ export default {
 
     methods: {
         navToUserHome() {
+            if (this.liveuser.permissions == "1") {
+                this.$router.push({ name: "kids", params: { currentuser: this.liveuser } });
+            } else{
             this.$router.push({ name: "home", params: { currentuser: this.liveuser } });
             // set a localstorage session object so that we don't have to log back in on page refresh or after our initial login
             localStorage.setItem("cachedUser", JSON.stringify(this.liveuser));
+        }
         }
     }
 
