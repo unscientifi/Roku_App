@@ -22,3 +22,6 @@ This is a group project for MMED_5006 at Fanshawe College. We are building a mob
 - [x] Kids Page Filtering
 - [x] Admin
 
+## Account Credentials
+Username: RRR
+Password: 111
