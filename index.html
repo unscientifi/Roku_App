@@ -18,7 +18,7 @@
   <main id="app">
 	<div class="container-fluid">
 		<div class="row">
-			<header class="col-sm-12 fixed-top">
+			<header class="col-sm-12">
 				<img src="images/roku_logo4.svg" alt="Roku logo" width="200" to="/">
 				<nav class="float-right">
 				<ul>
@@ -30,10 +30,10 @@
 				</nav>
 			</header>
 		</div>
-	</div> end container fluid
+	</div>
 	
 	<!-- first thing in component templates should be a container -->
-	<router-view @authenticated="setAuthenticated"/>	
+	<router-view @authenticated="setAuthenticated" />	
 
 	</main>
 
@@ -55,5 +55,9 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 	<script type="module" src="js/main.js"></script>
+
+	<script>
+		$('.toast').toast();
+	</script>
 </body>
 </html>

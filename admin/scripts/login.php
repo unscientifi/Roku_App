@@ -1,71 +1,67 @@
-<?php 
+<?php
 
-function login($username, $password, $ip){
-    $pdo = Database::getInstance()->getConnection();
-    //Check existance
-    $check_exist_query = 'SELECT COUNT(*) FROM tbl_user WHERE user_name= :username';
-    $user_set = $pdo->prepare($check_exist_query);
-    $user_set->execute(
-        array(
-            ':username' => $username,
-        )
+function login($username, $password, $ip)
+{
+    
+
+require_once('connect.php');
+  //check if username exists
+  $check_exist_query = "SELECT COUNT(*) FROM tbl_user WHERE user_name = :username";
+  
+  // var_dump($check_exist_query);
+  // $user_set = $pdo->query($check_exist_query);
+  $user_set = $pdo->prepare($check_exist_query);
+  $user_set->execute(
+    array(
+      ':username' => $username
+    )
+  );
+    // var_dump($user_set);exit;
+  if ($user_set->fetchColumn() > 0) {
+    $get_user_query = "SELECT * FROM tbl_user WHERE user_pass = :psw AND user_name = :username";
+    //var_dump($get_user_query);exit;
+    $get_user_set = $pdo->prepare($get_user_query);
+    $get_user_set->execute(
+      array(
+        ":psw" => $password,
+        ":username" => $username
+      )
     );
 
-    if($user_set->fetchColumn()>0){
-        //Log user in
-        $get_user_query = 'SELECT * FROM tbl_user WHERE user_name = :username';
-        $get_user_query .= ' AND user_pass = :password';
-        $user_check = $pdo->prepare($get_user_query);
-        $user_check->execute(
-            array(
-                ':username'=>$username,
-                ':password'=>$password
-            )
-        );
+    while ($found_user = $get_user_set->fetch(PDO::FETCH_ASSOC)) {
+      $id = $found_user['user_id'];
+      $_SESSION['user_id'] = $id;
+      $_SESSION['user_name'] = $found_user['user_name'];      
 
-        while($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
-            $id = $found_user['user_id'];
-            //Logged in!
-            $message = 'You just logged in!';
-            $_SESSION['user_id'] = $id;
-            $_SESSION['user_name'] = $found_user['user_fname'];
+      //Update user login IP
+			$update_ip_query = 'UPDATE tbl_user SET user_ip=:ip WHERE user_id=:id';
+			$update_ip_set = $pdo->prepare($update_ip_query);
+			$update_ip_set->execute(
+				array(
+					':ip'=>$ip,
+					':id'=>$id
+				)
+      );
+      
+      $user = array();
 
-            //TODO: finish the following lines so that when user logged in
-            // The user_ip column get updated by the $ip
-            $update_query = 'UPDATE tbl_user SET user_ip = :ip WHERE user_id = :id';
-            $update_set = $pdo->prepare($update_query);
-            $update_set->execute(
-                array(
-                    ':ip'=>$ip,
-                    ':id'=>$id
-                )
-            );
+      $user['id'] = $found_user['user_id'];
+      $user['username'] = $found_user['user_name'];
+      $user['admin'] = $found_user['user_admin'];
+      $user['access'] = $found_user['user_access'];
 
-            $user = array();
+      // add any other non-sensitive details here...
 
-            $user['id'] = $found_user['user_id'];
-            $user['admin'] = $found_user['user_isadmin'];
-            $user['avatar'] = $found_user['user_avatar'];
-            $user['permissions'] = $found_user['user_permissions'];
-            $user['uname'] = $found_user['user_name'];
-
-            return json_encode($user);
-        }
-
-    } else {
-        //User does not exist
-        $message = 'User does not exist';
-        return $message;
-    }    
-}
-
-function confirm_logged_in(){
-    if(!isset($_SESSION['user_id'])){
-        redirect_to('admin_login.php');
+      return $user;
     }
-}
 
-function logout(){
-    session_destroy();
-    redirect_to('admin_login.php');
+    if (empty($id)){
+        $message = 'No ID';
+        return $message;
+    }
+
+  } else {
+    $message = 'No User';
+    return $message;
+  }
 }

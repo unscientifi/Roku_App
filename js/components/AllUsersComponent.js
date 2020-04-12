@@ -30,16 +30,18 @@ export default {
 
 	methods: {
 		fetchAllUsers() {
-			let url = './admin/admin_getusers.php?allusers=true';
-
-			fetch(url) 
+		  let url = `./admin/scripts/users.php?allusers=true`;
+  
+		  fetch(url)
 			.then(res => res.json())
-			.then(data => this.userList = data)
-			.catch((error) => console.error(error))
+			.then(data => {this.userList = data})
+		  .catch(function(error) {
+			console.error(error);
+		  });
 		}
-	},
-
-	components: {
-		user: UserComponent
-	}
+	  },
+  
+	  components: {
+		  user: UserComponent
+	  }
 }

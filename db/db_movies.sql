@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 11, 2020 at 07:01 PM
+-- Generation Time: Apr 12, 2020 at 12:43 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -42,6 +42,86 @@ INSERT INTO `tbl_arating` (`arating_id`, `arating_name`, `arating_desc`) VALUES
 (3, 'PG-13', 'PG-13 – Parents Strongly Cautioned\r\nSome material may be inappropriate for children under 13. Parents are urged to be cautious. Some material may be inappropriate for pre-teenagers.'),
 (4, 'R', 'R – Restricted\r\nUnder 17 requires accompanying parent or adult guardian. Contains some adult material. Parents are urged to learn more about the film before taking their young children with them. '),
 (5, 'NC-17', 'NC-17 – Adults Only\r\nNo One 17 and Under Admitted. Clearly adult. Children are not admitted. ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_audio`
+--
+
+CREATE TABLE `tbl_audio` (
+  `audio_id` int(11) NOT NULL,
+  `audio_name` varchar(150) NOT NULL,
+  `audio_artist` varchar(125) NOT NULL,
+  `audio_year` varchar(10) NOT NULL,
+  `audio_cover` varchar(75) NOT NULL DEFAULT 'cover_default.jpg',
+  `audio_source` varchar(100) NOT NULL DEFAULT 'trailer_default.jpg',
+  `audio_rating` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_audio`
+--
+
+INSERT INTO `tbl_audio` (`audio_id`, `audio_name`, `audio_artist`, `audio_year`, `audio_cover`, `audio_source`, `audio_rating`) VALUES
+(1, 'Don\'t Be Cruel', 'Elvis Presley', '1956', '50_elvis.png', 'elvis.mp3', 'Kid Friendly'),
+(2, 'Wake Up, Little Susie', 'The Everly Brothers', '1957', '50_everlybrothers.png', 'everly.mp3', 'Kid Friendly'),
+(3, 'How High the Moon', 'Les Paul & Mary Ford', '1953', '50_paulmary.png', 'paulmary.mp3', 'Restricted'),
+(4, 'Smoke Gets in Your Eyes', 'The Platters', '1959', '50_platters.png', 'platters.mp3', 'Restricted'),
+(5, 'The House of the Rising Sun', 'The Animals', '1964', '60_animals.png', 'animals.mp3', 'Kid Friendly'),
+(6, 'She Loves You', 'The Beatles', '1963', '60_beatles.png', 'beatles.mp3', 'Kid Friendly'),
+(7, 'Please Mr. Postman', 'The Marvelettes', '1961', '60_marvelettes.png', 'marvelettes.mp3', 'Kid Friendly'),
+(8, 'I Got You Babe', 'Sonny & Cher', '1965', '60_sonnycher.png', 'sonnycher.mp3', 'Kid Friendly'),
+(9, 'Let\'s Stay Together', 'Al Green', '1971', '70_algreen.png', 'algreen.mp3', 'Restricted'),
+(10, 'Stairway to Heaven', 'Led Zeppelin', '1971', '70_ledzeppelin.png', 'ledzep.mp3', 'Kid Friendly'),
+(11, 'Don\'t Stop \'Til You Get Enough', 'Michael Jackson', '1979', '70_mj.png', 'dontstop.mp3', 'Kid Friendly'),
+(12, 'My Sharona', 'The Knack', '1979', '70_theknack.png', 'knack.mp3', 'Restricted'),
+(13, 'All Night Long (All Night)', 'Lionel Richie', '1983', '80_allnightlong.png', 'lionel.mp3', 'Restricted'),
+(14, 'Livin\' on a Prayer', 'Bon Jovi', '1986', '80_bonjovi.png', 'bonjovi.mp3', 'Kid Friendly'),
+(15, 'Don\'t You (Forget About Me)', 'Simple Minds', '1985', '80_simpleminds.png', 'simpleminds.mp3', 'Kid Friendly'),
+(16, 'Every Breath you Take', 'The Police', '1983', '80_thepolice.png', 'police.mp3', 'Kid Friendly'),
+(17, 'Genie in a Bottle', 'Christina Aguilera', '1999', '90_christina.png', 'genie.mp3', 'Kid Friendly'),
+(18, 'Creep', 'Radiohead', '1992', '90_radiohead.png', 'creep.mp3', 'Restricted'),
+(19, 'Wannabe', 'The Spice Girls', '1996', '90_spicegirls.png', 'spicegirls.mp3', 'Kid Friendly'),
+(20, 'I Will Always Love You', 'Whitney Houston', '1992', '90_whitney.png', 'whitney.mp3', 'Kid Friendly');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_audio_year`
+--
+
+CREATE TABLE `tbl_audio_year` (
+  `audio_year_id` smallint(6) NOT NULL,
+  `audio_id` smallint(6) NOT NULL,
+  `year_id` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_audio_year`
+--
+
+INSERT INTO `tbl_audio_year` (`audio_year_id`, `audio_id`, `year_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 2),
+(6, 6, 2),
+(7, 7, 2),
+(8, 8, 2),
+(9, 9, 3),
+(10, 10, 3),
+(11, 11, 3),
+(12, 12, 3),
+(13, 13, 4),
+(14, 14, 4),
+(15, 15, 4),
+(16, 16, 4),
+(17, 17, 5),
+(18, 18, 5),
+(19, 19, 5),
+(20, 20, 5);
 
 -- --------------------------------------------------------
 
@@ -657,26 +737,26 @@ CREATE TABLE `tbl_movies` (
 --
 
 INSERT INTO `tbl_movies` (`movies_id`, `movies_cover`, `movies_title`, `movies_year`, `movies_storyline`, `movies_trailer`, `movies_rating`) VALUES
-(1, '50_rearwindow.jpg', 'Rear Window', '1954', 'A wheelchair bound photographer (James Stewart) spies on his neighbours from his apartment window and becomes convinced one of them has committed murder.', 'https://www.youtube.com/watch?v=m01YktiEZCw', 'PG'),
-(2, '50_singinrain.jpg', 'Singin\' in the Rain', '1952', '1927 Hollywood. Monumental Pictures\' biggest stars, glamorous on-screen couple Lina Lamont and Don Lockwood, are also an off-screen couple if the trade papers and gossip columns are to be believed. Both perpetuate the public perception if only to please their adoring fans and bring people into the movie theaters.', 'https://www.youtube.com/watch?v=D1ZYhVpdXbQ', 'Family'),
-(3, '50_vertigo.jpg', 'Vertigo', '1958', 'A San Francisco detective (James Stewart) suffering from acrophobia investigates the strange activities of an old friend\'s wife, all the while becoming dangerously obsessed with her.', 'https://www.youtube.com/watch?v=Z5jvQwwHQNY', 'PG'),
-(4, '60_breakfast.jpg', 'Breakfast at Tiffany\'s', '1961', 'Fred (George Peppard) hears Holly (Audrey Hepburn) singing on the fire escape below his apartment and goes out to listen.', 'https://www.youtube.com/watch?v=uirBWk-qd9A', 'Not Rated'),
-(5, '50_rashomon.jpg', 'Rashomon', '1950', 'Brimming with action while incisively examining the nature of truth, \"Rashomon\" is perhaps the finest film ever to investigate the philosophy of justice. Through an ingenious use of camera and flashbacks, Kurosawa reveals the complexities of human nature as four people recount different versions of the story of a man\'s murder and the rape of his wife.', 'https://www.youtube.com/watch?v=Zqoyl2p8_lw', 'Not Rated'),
-(6, '60_drstrangelove.jpg', 'Dr. Strange Love', '1964', 'An insane general triggers a path to nuclear holocaust that a war room full of politicians and generals frantically tries to stop.', 'https://www.youtube.com/watch?v=jPU1AYTxwg4', 'PG'),
-(7, '60_psycho.jpg', 'Psycho', '1960', 'A Phoenix secretary steals $40,000 from her employer\'s client, goes on the run and checks into a remote motel run by a young man under the domination of his mother.', 'https://www.youtube.com/watch?v=DTJQfFQ40lI', 'R'),
-(8, '60_rosemary.jpg', 'Rosemary\'s Baby', '1968', 'A young couple moves in to an apartment only to be surrounded by peculiar neighbors and occurrences. When the wife becomes mysteriously pregnant, paranoia over the safety of her unborn child begins to control her life.', 'https://www.youtube.com/watch?v=BjpA6IH_Skc', 'R'),
-(9, '70_closeencounters.jpg', 'Close Encounters of the Third Kind', '1977', 'After an accidental encounter with otherworldly vessels, an ordinary man follows a series of psychic clues to the first scheduled meeting between representatives of Earth and visitors from the cosmos.', 'https://www.youtube.com/watch?v=XrgC0ut2De0', 'PG'),
-(10, '70_frenchconnection.jpg', 'The French Connection', '1971', 'A pair of NYC cops in the Narcotics Bureau stumble onto a drug smuggling job with a French connection.', 'https://www.youtube.com/watch?v=ncWxtpXn3gA', 'R'),
-(11, '70_jaws.jpg', 'Jaws', '1975', 'Directed by Steven Spielberg and starring Roy Scheider Robert Shaw Richard Dreyfuss Lorraine Gary and Murray Hamilton An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.', 'https://www.youtube.com/watch?v=U1fu_sA7XhE', 'PG'),
-(12, '70_taxi.jpg', 'Taxi Driver', '1976', 'Paul Schrader\'s gritty screenplay depicts the ever-deepening alienation of Vietnam Veteran Travis Bickle (Robert De Niro in a tour-de-force performance), a psychotic cab driver who obsessively cruises the mean streets of Manhattan.', 'https://www.youtube.com/watch?v=UUxD4-dEzn0', 'R'),
-(13, '80_back2future.jpg', 'Back to the Future', '1985', 'A teenager is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence.', 'https://www.youtube.com/watch?v=qvsgGtivCgs', 'Family'),
-(14, '80_et.jpg', 'E.T. the Extra-Terrestrial', '1982', 'A troubled child summons the courage to help a friendly alien escape Earth and return to his home-world.', 'https://www.youtube.com/watch?v=qYAETtIIClk', 'Family'),
-(15, '80_ghostbusters.jpg', 'Ghostbusters', '1984', 'Three former parapsychology professors set up shop as a unique ghost removal service.', 'https://www.youtube.com/watch?v=6hDkhw5Wkas', 'PG'),
-(16, '80_princessbride.jpg', 'The Princess Bride', '1987', 'In this enchantingly cracked fairy tale, the beautiful Princess Buttercup and the dashing Westley must overcome staggering odds to find happiness amid six-fingered swordsmen, murderous princes, Sicilians and rodents of unusual size. But even death can\'t stop these true lovebirds from triumphing.', 'https://www.youtube.com/watch?v=O3CIXEAjcc8', 'Family'),
-(17, '90_homealone.jpg', 'Home Alone', '1990', 'When bratty 8-year-old Kevin McCallister (Macaulay Culkin) acts out the night before a family trip to Paris, his mother (Catherine O\'Hara) makes him sleep in the attic. After the McCallisters mistakenly leave for the airport without Kevin, he awakens to an empty house and assumes his wish to have no family has come true.', 'https://www.youtube.com/watch?v=jEDaVHmw7r4', 'Family'),
-(18, '90_pulpfiction.jpg', 'Pulp Fiction', '1994', 'Hit men, gangsters and robbers converge in Quentin Tarantino\'s violent tale of revenge. Stars John Travolta Samuel L. Jackson Bruce Willis and Uma Thurman', 'https://www.youtube.com/watch?v=s7EdQ4FqbhY', 'R'),
-(19, '90_silencelambs.jpg', 'The Silence of the Lambs', '1991', 'FBI trainee Clarice Starling ventures into a maximum-security asylum to pick the diseased brain of Hannibal Lecter, a psychiatrist turned homicidal cannibal', 'https://www.youtube.com/watch?v=W6Mm8Sbe__o', 'R'),
-(20, '90_titanic.jpg', 'Titanic', '1997', 'Leonardo DiCaprio and Oscar-nominatee Kate Winslet light up the screen as Jack and Rose, the young lovers who find one another on the maiden voyage of the \"unsinkable\" R.M.S. Titanic.', 'https://www.youtube.com/watch?v=2e-eXJ6HgkQ', 'PG-13');
+(1, '50_rearwindow.jpg', 'Rear Window', '1954', 'A wheelchair bound photographer (James Stewart) spies on his neighbours from his apartment window and becomes convinced one of them has committed murder.', 'https://www.youtube.com/embed/watch?v=m01YktiEZCw', 'PG'),
+(2, '50_singinrain.jpg', 'Singin\' in the Rain', '1952', '1927 Hollywood. Monumental Pictures\' biggest stars, glamorous on-screen couple Lina Lamont and Don Lockwood, are also an off-screen couple if the trade papers and gossip columns are to be believed. Both perpetuate the public perception if only to please their adoring fans and bring people into the movie theaters.', 'https://www.youtube.com/embed/watch?v=D1ZYhVpdXbQ', 'Family'),
+(3, '50_vertigo.jpg', 'Vertigo', '1958', 'A San Francisco detective (James Stewart) suffering from acrophobia investigates the strange activities of an old friend\'s wife, all the while becoming dangerously obsessed with her.', 'https://www.youtube.com/embed/watch?v=Z5jvQwwHQNY', 'PG'),
+(4, '60_breakfast.jpg', 'Breakfast at Tiffany\'s', '1961', 'Fred (George Peppard) hears Holly (Audrey Hepburn) singing on the fire escape below his apartment and goes out to listen.', 'https://www.youtube.com/embed/watch?v=uirBWk-qd9A', 'Not Rated'),
+(5, '50_rashomon.jpg', 'Rashomon', '1950', 'Brimming with action while incisively examining the nature of truth, \"Rashomon\" is perhaps the finest film ever to investigate the philosophy of justice. Through an ingenious use of camera and flashbacks, Kurosawa reveals the complexities of human nature as four people recount different versions of the story of a man\'s murder and the rape of his wife.', 'https://www.youtube.com/embed/watch?v=Zqoyl2p8_lw', 'Not Rated'),
+(6, '60_drstrangelove.jpg', 'Dr. Strange Love', '1964', 'An insane general triggers a path to nuclear holocaust that a war room full of politicians and generals frantically tries to stop.', 'https://www.youtube.com/embed/watch?v=jPU1AYTxwg4', 'PG'),
+(7, '60_psycho.jpg', 'Psycho', '1960', 'A Phoenix secretary steals $40,000 from her employer\'s client, goes on the run and checks into a remote motel run by a young man under the domination of his mother.', 'https://www.youtube.com/embed/watch?v=DTJQfFQ40lI', 'R'),
+(8, '60_rosemary.jpg', 'Rosemary\'s Baby', '1968', 'A young couple moves in to an apartment only to be surrounded by peculiar neighbors and occurrences. When the wife becomes mysteriously pregnant, paranoia over the safety of her unborn child begins to control her life.', 'https://www.youtube.com/embed/watch?v=BjpA6IH_Skc', 'R'),
+(9, '70_closeencounters.jpg', 'Close Encounters of the Third Kind', '1977', 'After an accidental encounter with otherworldly vessels, an ordinary man follows a series of psychic clues to the first scheduled meeting between representatives of Earth and visitors from the cosmos.', 'https://www.youtube.com/embed/watch?v=XrgC0ut2De0', 'PG'),
+(10, '70_frenchconnection.jpg', 'The French Connection', '1971', 'A pair of NYC cops in the Narcotics Bureau stumble onto a drug smuggling job with a French connection.', 'https://www.youtube.com/embed/watch?v=ncWxtpXn3gA', 'R'),
+(11, '70_jaws.jpg', 'Jaws', '1975', 'Directed by Steven Spielberg and starring Roy Scheider Robert Shaw Richard Dreyfuss Lorraine Gary and Murray Hamilton An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.', 'https://www.youtube.com/embed/watch?v=U1fu_sA7XhE', 'PG'),
+(12, '70_taxi.jpg', 'Taxi Driver', '1976', 'Paul Schrader\'s gritty screenplay depicts the ever-deepening alienation of Vietnam Veteran Travis Bickle (Robert De Niro in a tour-de-force performance), a psychotic cab driver who obsessively cruises the mean streets of Manhattan.', 'https://www.youtube.com/embed/watch?v=UUxD4-dEzn0', 'R'),
+(13, '80_back2future.jpg', 'Back to the Future', '1985', 'A teenager is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence.', 'https://www.youtube.com/embed/watch?v=qvsgGtivCgs', 'Family'),
+(14, '80_et.jpg', 'E.T. the Extra-Terrestrial', '1982', 'A troubled child summons the courage to help a friendly alien escape Earth and return to his home-world.', 'https://www.youtube.com/embed/watch?v=qYAETtIIClk', 'Family'),
+(15, '80_ghostbusters.jpg', 'Ghostbusters', '1984', 'Three former parapsychology professors set up shop as a unique ghost removal service.', 'https://www.youtube.com/embed/watch?v=6hDkhw5Wkas', 'PG'),
+(16, '80_princessbride.jpg', 'The Princess Bride', '1987', 'In this enchantingly cracked fairy tale, the beautiful Princess Buttercup and the dashing Westley must overcome staggering odds to find happiness amid six-fingered swordsmen, murderous princes, Sicilians and rodents of unusual size. But even death can\'t stop these true lovebirds from triumphing.', 'https://www.youtube.com/embed/watch?v=O3CIXEAjcc8', 'Family'),
+(17, '90_homealone.jpg', 'Home Alone', '1990', 'When bratty 8-year-old Kevin McCallister (Macaulay Culkin) acts out the night before a family trip to Paris, his mother (Catherine O\'Hara) makes him sleep in the attic. After the McCallisters mistakenly leave for the airport without Kevin, he awakens to an empty house and assumes his wish to have no family has come true.', 'https://www.youtube.com/embed/watch?v=jEDaVHmw7r4', 'Family'),
+(18, '90_pulpfiction.jpg', 'Pulp Fiction', '1994', 'Hit men, gangsters and robbers converge in Quentin Tarantino\'s violent tale of revenge. Stars John Travolta Samuel L. Jackson Bruce Willis and Uma Thurman', 'https://www.youtube.com/embed/watch?v=s7EdQ4FqbhY', 'R'),
+(19, '90_silencelambs.jpg', 'The Silence of the Lambs', '1991', 'FBI trainee Clarice Starling ventures into a maximum-security asylum to pick the diseased brain of Hannibal Lecter, a psychiatrist turned homicidal cannibal', 'https://www.youtube.com/embed/watch?v=W6Mm8Sbe__o', 'R'),
+(20, '90_titanic.jpg', 'Titanic', '1997', 'Leonardo DiCaprio and Oscar-nominatee Kate Winslet light up the screen as Jack and Rose, the young lovers who find one another on the maiden voyage of the \"unsinkable\" R.M.S. Titanic.', 'https://www.youtube.com/embed/watch?v=2e-eXJ6HgkQ', 'PG-13');
 
 -- --------------------------------------------------------
 
@@ -967,44 +1047,40 @@ INSERT INTO `tbl_mov_studio` (`mov_studio_id`, `movies_id`, `studio_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_music`
+-- Table structure for table `tbl_mov_year`
 --
 
-CREATE TABLE `tbl_music` (
-  `music_id` int(11) NOT NULL,
-  `music_name` varchar(150) NOT NULL,
-  `music_artist` varchar(125) NOT NULL,
-  `music_year` varchar(10) NOT NULL,
-  `music_cover` varchar(75) NOT NULL DEFAULT 'cover_default.jpg',
-  `music_source` varchar(100) NOT NULL DEFAULT 'trailer_default.jpg',
-  `music_rating` varchar(15) NOT NULL
+CREATE TABLE `tbl_mov_year` (
+  `movie_year_id` smallint(6) NOT NULL,
+  `movies_id` smallint(6) NOT NULL,
+  `year_id` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_music`
+-- Dumping data for table `tbl_mov_year`
 --
 
-INSERT INTO `tbl_music` (`music_id`, `music_name`, `music_artist`, `music_year`, `music_cover`, `music_source`, `music_rating`) VALUES
-(1, 'Don\'t Be Cruel', 'Elvis Presley', '1956', '50_elvis.png', 'elvis.mp3', 'Kid Friendly'),
-(2, 'Wake Up, Little Susie', 'The Everly Brothers', '1957', '50_everlybrothers.png', 'everly.mp3', 'Kid Friendly'),
-(3, 'How High the Moon', 'Les Paul & Mary Ford', '1953', '50_paulmary.png', 'paulmary.mp3', 'Restricted'),
-(4, 'Smoke Gets in Your Eyes', 'The Platters', '1959', '50_platters.png', 'platters.mp3', 'Restricted'),
-(5, 'The House of the Rising Sun', 'The Animals', '1964', '60_animals.png', 'animals.mp3', 'Kid Friendly'),
-(6, 'She Loves You', 'The Beatles', '1963', '60_beatles.png', 'beatles.mp3', 'Kid Friendly'),
-(7, 'Please Mr. Postman', 'The Marvelettes', '1961', '60_marvelettes.png', 'marvelettes.mp3', 'Kid Friendly'),
-(8, 'I Got You Babe', 'Sonny & Cher', '1965', '60_sonnycher.png', 'sonnycher.mp3', 'Kid Friendly'),
-(9, 'Let\'s Stay Together', 'Al Green', '1971', '70_algreen.png', 'algreen.mp3', 'Restricted'),
-(10, 'Stairway to Heaven', 'Led Zeppelin', '1971', '70_ledzeppelin.png', 'ledzep.mp3', 'Kid Friendly'),
-(11, 'Don\'t Stop \'Til You Get Enough', 'Michael Jackson', '1979', '70_mj.png', 'dontstop.mp3', 'Kid Friendly'),
-(12, 'My Sharona', 'The Knack', '1979', '70_theknack.png', 'knack.mp3', 'Restricted'),
-(13, 'All Night Long (All Night)', 'Lionel Richie', '1983', '80_allnightlong.png', 'lionel.mp3', 'Restricted'),
-(14, 'Livin\' on a Prayer', 'Bon Jovi', '1986', '80_bonjovi.png', 'bonjovi.mp3', 'Kid Friendly'),
-(15, 'Don\'t You (Forget About Me)', 'Simple Minds', '1985', '80_simpleminds.png', 'simpleminds.mp3', 'Kid Friendly'),
-(16, 'Every Breath you Take', 'The Police', '1983', '80_thepolice.png', 'police.mp3', 'Kid Friendly'),
-(17, 'Genie in a Bottle', 'Christina Aguilera', '1999', '90_christina.png', 'genie.mp3', 'Kid Friendly'),
-(18, 'Creep', 'Radiohead', '1992', '90_radiohead.png', 'creep.mp3', 'Restricted'),
-(19, 'Wannabe', 'The Spice Girls', '1996', '90_spicegirls.png', 'spicegirls.mp3', 'Kid Friendly'),
-(20, 'I Will Always Love You', 'Whitney Houston', '1992', '90_whitney.png', 'whitney.mp3', 'Kid Friendly');
+INSERT INTO `tbl_mov_year` (`movie_year_id`, `movies_id`, `year_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 2),
+(6, 6, 2),
+(7, 7, 2),
+(8, 8, 2),
+(9, 9, 3),
+(10, 10, 3),
+(11, 11, 3),
+(12, 12, 3),
+(13, 13, 4),
+(14, 14, 4),
+(15, 15, 4),
+(16, 16, 4),
+(17, 17, 5),
+(18, 18, 5),
+(19, 19, 5),
+(20, 20, 5);
 
 -- --------------------------------------------------------
 
@@ -1064,26 +1140,64 @@ CREATE TABLE `tbl_tv` (
 --
 
 INSERT INTO `tbl_tv` (`tv_id`, `tv_name`, `tv_year`, `tv_cover`, `tv_storyline`, `tv_trailer`, `tv_rating`) VALUES
-(1, 'Leave it to Beaver', '1957', '50_beaver.jpg', 'Theodore, a young and inquisitive boy, lives with his parents June and Ward Cleaver and brother Wally. His father gives him advice when he gets into trouble at school, home and in the neighbourhood.', 'https://www.youtube.com/watch?v=sgtiPOk83Ek', 'Family'),
-(2, 'I Love Lucy', '1951', '50_lucy.jpg', 'Naive and ambitious but lacking the skill, Lucy\'s relentless efforts to get into showbiz often lands herself and her husband into trouble.Her neighbours and friends also get entangled in her antics.', 'https://www.youtube.com/watch?v=M9NKtX0Z-zs', 'Family'),
-(3, 'The Twilight Zone', '1985', '50_twilight.jpg', 'This 1980s revival of the classic sci-fi series features a similar style to the original anthology series. Each episode tells a tale (sometimes two or three) rooted in horror or suspense, often with a surprising twist at the end.', 'https://www.youtube.com/watch?v=nMNZU3oqX3U', 'TV-PG'),
-(4, 'Wagon Train', '1957', '50_wagontrain.jpg', 'Major Seth Adams and his scout Flint McCullough embark on several adventures as they navigate the Wild West on a wagon train.', 'https://www.youtube.com/watch?v=SIVmPaXitlQ', 'TV-PG'),
-(5, 'Batman', '1966', '60_batman.jpg', 'The series focuses on Batman and Robin as they defend Gotham City from its various criminals. Although the lives of their alter-egos, millionaire Bruce Wayne and his ward Dick Grayson are frequently shown, it is usually only briefly, in the context of their being called away on superhero business or in circumstances where they need to employ their public identities to assist in their crime-fighting.', 'https://www.youtube.com/watch?v=vvY5MgOgDUw', 'TV-PG'),
-(6, 'Bewitched', '1964', '60_bewitched.jpg', 'Only Joan (Phyllis Thaxter) knows the real reason she fainted at her engagement party and suddenly deserts her fiancé, Bob (Henry H. Daniels, Jr.). It\'s the command of the sinister, vengeful \"Karen,\" a terrifying alternate personality raging inside Joan who will ultimately direct her to kill.', 'https://www.youtube.com/watch?v=bQwg0Gu7p5k', 'Family'),
-(7, 'I Dream of Jeannie', '1964', '60_jeannie.jpg', 'I Dream of Jeannie is an American sitcom with a fantasy premise. The show starred Barbara Eden as a 2,000-year-old genie, and Larry Hagman as an astronaut who becomes her master, with whom she falls in love and eventually marries. ', 'https://www.youtube.com/watch?v=ND1MXF-svtQ', 'Family'),
-(8, 'Star Trek: The Original Series', '1966', '60_startrek.jpg', 'James T Kirk, who is the captain of the Starship Enterprise, explores the whole galaxy with his crew and goes on several adventures as they fight evil forces together.', 'https://www.youtube.com/watch?v=nPDb5wX4H7I', 'TV-PG'),
-(9, 'The Brady Bunch', '1970', '70_bradybunch.jpg', 'Mike, an architect with three sons, and Carol, a homemaker with three daughters, get married but their children struggle to bond with each other, leading to a challenging life for the family.', 'https://www.youtube.com/watch?v=he4WPvKGGR0', 'TV-PG'),
-(10, 'Charlie\'s Angels', '1976', '70_charliesangels.jpg', 'The show that ushered in the phrase \"jiggle TV\" features three beautiful police academy-trained private detectives whose cases always seem to require that they don bikinis, evening gowns or other sexy clothing. The unseen Charlie relays instructions via speakerphone.', 'https://www.youtube.com/watch?v=hUQJFplxkq0', 'TV-PG'),
-(11, 'Happy Days', '1974', '70_happydays.jpg', 'Set in 1950s and 1960s Milwaukee, this series tells the story of the Cunningham family -- father Howard, mother Marion, son Richie and daughter Joanie.', 'https://www.youtube.com/watch?v=xgh44J2c83o', 'Family'),
-(12, 'The Jeffersons', '1975', '70_jeffersons.jpg', 'George and Louise Jefferson, an African-American couple, moves from Queens to Manhattan in New York, after tasting success in their dry-cleaning business.', 'https://www.youtube.com/watch?v=5DfmvJ6bDAM', 'TV-PG'),
-(13, 'The Cosby Show', '1984', '80_cosby.jpg', '\"The Cosby Show\" centers on the lives of the Huxtables: obstetrician Cliff and his lawyer wife Claire, their daughters Sondra, Denise, Vanessa and Rudy, and son Theo. Based on the standup comedy of Bill Cosby, the show focused on his observations of family life.', 'https://www.youtube.com/watch?v=ubkpnXTamI0', 'Family'),
-(14, 'The Golden Girls', '1985', '80_goldengirls.jpg', 'Girls from different parts of the country participate in a series of contests and demonstrate their unique skills and talent to win the coveted title.', 'https://www.youtube.com/watch?v=1O7ZCFME2Z4', 'TV-PG'),
+(1, 'Leave it to Beaver', '1957', '50_beaver.jpg', 'Theodore, a young and inquisitive boy, lives with his parents June and Ward Cleaver and brother Wally. His father gives him advice when he gets into trouble at school, home and in the neighbourhood.', 'https://www.youtube.com/embed/watch?v=sgtiPOk83Ek', 'Family'),
+(2, 'I Love Lucy', '1951', '50_lucy.jpg', 'Naive and ambitious but lacking the skill, Lucy\'s relentless efforts to get into showbiz often lands herself and her husband into trouble.Her neighbours and friends also get entangled in her antics.', 'https://www.youtube.com/embed/watch?v=M9NKtX0Z-zs', 'Family'),
+(3, 'The Twilight Zone', '1985', '50_twilight.jpg', 'This 1980s revival of the classic sci-fi series features a similar style to the original anthology series. Each episode tells a tale (sometimes two or three) rooted in horror or suspense, often with a surprising twist at the end.', 'https://www.youtube.com/embed/watch?v=nMNZU3oqX3U', 'TV-PG'),
+(4, 'Wagon Train', '1957', '50_wagontrain.jpg', 'Major Seth Adams and his scout Flint McCullough embark on several adventures as they navigate the Wild West on a wagon train.', 'https://www.youtube.com/embed/watch?v=SIVmPaXitlQ', 'TV-PG'),
+(5, 'Batman', '1966', '60_batman.jpg', 'The series focuses on Batman and Robin as they defend Gotham City from its various criminals. Although the lives of their alter-egos, millionaire Bruce Wayne and his ward Dick Grayson are frequently shown, it is usually only briefly, in the context of their being called away on superhero business or in circumstances where they need to employ their public identities to assist in their crime-fighting.', 'https://www.youtube.com/embed/watch?v=vvY5MgOgDUw', 'TV-PG'),
+(6, 'Bewitched', '1964', '60_bewitched.jpg', 'Only Joan (Phyllis Thaxter) knows the real reason she fainted at her engagement party and suddenly deserts her fiancé, Bob (Henry H. Daniels, Jr.). It\'s the command of the sinister, vengeful \"Karen,\" a terrifying alternate personality raging inside Joan who will ultimately direct her to kill.', 'https://www.youtube.com/embed/watch?v=bQwg0Gu7p5k', 'Family'),
+(7, 'I Dream of Jeannie', '1964', '60_jeannie.jpg', 'I Dream of Jeannie is an American sitcom with a fantasy premise. The show starred Barbara Eden as a 2,000-year-old genie, and Larry Hagman as an astronaut who becomes her master, with whom she falls in love and eventually marries. ', 'https://www.youtube.com/embed/watch?v=ND1MXF-svtQ', 'Family'),
+(8, 'Star Trek: The Original Series', '1966', '60_startrek.jpg', 'James T Kirk, who is the captain of the Starship Enterprise, explores the whole galaxy with his crew and goes on several adventures as they fight evil forces together.', 'https://www.youtube.com/embed/watch?v=nPDb5wX4H7I', 'TV-PG'),
+(9, 'The Brady Bunch', '1970', '70_bradybunch.jpg', 'Mike, an architect with three sons, and Carol, a homemaker with three daughters, get married but their children struggle to bond with each other, leading to a challenging life for the family.', 'https://www.youtube.com/embed/watch?v=he4WPvKGGR0', 'TV-PG'),
+(10, 'Charlie\'s Angels', '1976', '70_charliesangels.jpg', 'The show that ushered in the phrase \"jiggle TV\" features three beautiful police academy-trained private detectives whose cases always seem to require that they don bikinis, evening gowns or other sexy clothing. The unseen Charlie relays instructions via speakerphone.', 'https://www.youtube.com/embed/watch?v=hUQJFplxkq0', 'TV-PG'),
+(11, 'Happy Days', '1974', '70_happydays.jpg', 'Set in 1950s and 1960s Milwaukee, this series tells the story of the Cunningham family -- father Howard, mother Marion, son Richie and daughter Joanie.', 'https://www.youtube.com/embed/watch?v=xgh44J2c83o', 'Family'),
+(12, 'The Jeffersons', '1975', '70_jeffersons.jpg', 'George and Louise Jefferson, an African-American couple, moves from Queens to Manhattan in New York, after tasting success in their dry-cleaning business.', 'https://www.youtube.com/embed/watch?v=5DfmvJ6bDAM', 'TV-PG'),
+(13, 'The Cosby Show', '1984', '80_cosby.jpg', '\"The Cosby Show\" centers on the lives of the Huxtables: obstetrician Cliff and his lawyer wife Claire, their daughters Sondra, Denise, Vanessa and Rudy, and son Theo. Based on the standup comedy of Bill Cosby, the show focused on his observations of family life.', 'https://www.youtube.com/embed/watch?v=ubkpnXTamI0', 'Family'),
+(14, 'The Golden Girls', '1985', '80_goldengirls.jpg', 'Girls from different parts of the country participate in a series of contests and demonstrate their unique skills and talent to win the coveted title.', 'https://www.youtube.com/embed/watch?v=1O7ZCFME2Z4', 'TV-PG'),
 (15, 'M*A*S*H', '1983', '80_mash.jpg', 'The series is centered upon the interrelationships, stress and trauma involved in being a part of Mobile Army Surgical Hospital. They survive insuperable odds with the help of practical jokes and fun.', 'trailer_default.jpg', 'TV-PG'),
-(16, 'Miami Vice', '1984', '80_miamivice.jpg', 'This series is largely remembered for the stylish clothes Detectives Sonny Crockett and Ricardo Tubbs wore, the soundtrack, and its distinct visuals. But beneath the veneer is a surprisingly dark cop show. The cocaine boom of the 1980s framed many stories about drugs and murder, with Crockett and Tubbs often resorting to violence in the course of their work.', 'https://www.youtube.com/watch?v=b6OymLS64Jo', 'TV-14'),
-(17, 'Boy Meets World', '1993', '90_boymeetsworld.jpg', 'With the help of true love Topanga, best friend Shawn and teacher Mr. Feeny, Cory Matthews juggles school, friends and romance. The series, a popular Friday night staple on ABC for seven seasons, began with Cory in the sixth grade and follows him and his entourage through their college years.', 'https://www.youtube.com/watch?v=Be3ql9bLV34', 'Family'),
-(18, 'Full House', '1990', '90_fullhouse.jpg', 'Danny is a widower who is raising his three little girls after the death of his wife. But he has help from his musician brother-in-law, Jesse Katsopolis, and his best friend, comedian Joey Gladstone.', 'https://www.youtube.com/watch?v=SDP7__2F1YE', 'Family'),
-(19, 'Seinfeld', '1990', '90_seinfeld.jpg', 'Stand-up comedian Jerry Seinfeld wrestles with life\'s most perplexing yet trivial questions with his eccentric friends George, Elaine and Kramer.', 'https://www.youtube.com/watch?v=SOsbYJ4CfTA', 'TV-PG'),
-(20, 'The X-Files', '1993', '90_xfiles.jpg', 'Conspiracy theorist Fox Mulder and realist Dana Scully pull out all the stops as FBI special agents to investigate and get to the bottom of inexplicable paranormal cases.', 'https://www.youtube.com/watch?v=Xcf44Nit7_A', 'TV-14');
+(16, 'Miami Vice', '1984', '80_miamivice.jpg', 'This series is largely remembered for the stylish clothes Detectives Sonny Crockett and Ricardo Tubbs wore, the soundtrack, and its distinct visuals. But beneath the veneer is a surprisingly dark cop show. The cocaine boom of the 1980s framed many stories about drugs and murder, with Crockett and Tubbs often resorting to violence in the course of their work.', 'https://www.youtube.com/embed/watch?v=b6OymLS64Jo', 'TV-14'),
+(17, 'Boy Meets World', '1993', '90_boymeetsworld.jpg', 'With the help of true love Topanga, best friend Shawn and teacher Mr. Feeny, Cory Matthews juggles school, friends and romance. The series, a popular Friday night staple on ABC for seven seasons, began with Cory in the sixth grade and follows him and his entourage through their college years.', 'https://www.youtube.com/embed/watch?v=Be3ql9bLV34', 'Family'),
+(18, 'Full House', '1990', '90_fullhouse.jpg', 'Danny is a widower who is raising his three little girls after the death of his wife. But he has help from his musician brother-in-law, Jesse Katsopolis, and his best friend, comedian Joey Gladstone.', 'https://www.youtube.com/embed/watch?v=SDP7__2F1YE', 'Family'),
+(19, 'Seinfeld', '1990', '90_seinfeld.jpg', 'Stand-up comedian Jerry Seinfeld wrestles with life\'s most perplexing yet trivial questions with his eccentric friends George, Elaine and Kramer.', 'https://www.youtube.com/embed/watch?v=SOsbYJ4CfTA', 'TV-PG'),
+(20, 'The X-Files', '1993', '90_xfiles.jpg', 'Conspiracy theorist Fox Mulder and realist Dana Scully pull out all the stops as FBI special agents to investigate and get to the bottom of inexplicable paranormal cases.', 'https://www.youtube.com/embed/watch?v=Xcf44Nit7_A', 'TV-14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tv_year`
+--
+
+CREATE TABLE `tbl_tv_year` (
+  `tv_year_id` smallint(6) NOT NULL,
+  `tv_id` smallint(6) NOT NULL,
+  `year_id` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_tv_year`
+--
+
+INSERT INTO `tbl_tv_year` (`tv_year_id`, `tv_id`, `year_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 2),
+(6, 6, 2),
+(7, 7, 2),
+(8, 8, 2),
+(9, 9, 3),
+(10, 10, 3),
+(11, 11, 3),
+(12, 12, 3),
+(13, 13, 4),
+(14, 14, 4),
+(15, 15, 4),
+(16, 16, 4),
+(17, 17, 5),
+(18, 18, 5),
+(19, 19, 5),
+(20, 20, 5);
 
 -- --------------------------------------------------------
 
@@ -1126,6 +1240,28 @@ INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user
 (3, 'RRR', 'RRR', '111', '111@gmail.com', '2020-02-24 21:26:31', '::1', '0', 'user3.jpg', 1, 5),
 (7, 'kid', 'KID', '111', '', '2020-03-09 18:41:17', 'no', '', 'user4.jpg', 0, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_year`
+--
+
+CREATE TABLE `tbl_year` (
+  `year_id` int(11) NOT NULL,
+  `year_name` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_year`
+--
+
+INSERT INTO `tbl_year` (`year_id`, `year_name`) VALUES
+(1, '1950'),
+(2, '1960'),
+(3, '1970'),
+(4, '1980'),
+(5, '1990');
+
 --
 -- Indexes for dumped tables
 --
@@ -1135,6 +1271,18 @@ INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user
 --
 ALTER TABLE `tbl_arating`
   ADD PRIMARY KEY (`arating_id`);
+
+--
+-- Indexes for table `tbl_audio`
+--
+ALTER TABLE `tbl_audio`
+  ADD PRIMARY KEY (`audio_id`);
+
+--
+-- Indexes for table `tbl_audio_year`
+--
+ALTER TABLE `tbl_audio_year`
+  ADD PRIMARY KEY (`audio_year_id`);
 
 --
 -- Indexes for table `tbl_cast`
@@ -1216,10 +1364,10 @@ ALTER TABLE `tbl_mov_studio`
   ADD PRIMARY KEY (`mov_studio_id`);
 
 --
--- Indexes for table `tbl_music`
+-- Indexes for table `tbl_mov_year`
 --
-ALTER TABLE `tbl_music`
-  ADD PRIMARY KEY (`music_id`);
+ALTER TABLE `tbl_mov_year`
+  ADD PRIMARY KEY (`movie_year_id`);
 
 --
 -- Indexes for table `tbl_studio`
@@ -1234,6 +1382,12 @@ ALTER TABLE `tbl_tv`
   ADD PRIMARY KEY (`tv_id`);
 
 --
+-- Indexes for table `tbl_tv_year`
+--
+ALTER TABLE `tbl_tv_year`
+  ADD PRIMARY KEY (`tv_year_id`);
+
+--
 -- Indexes for table `tbl_urating`
 --
 ALTER TABLE `tbl_urating`
@@ -1246,6 +1400,12 @@ ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `tbl_year`
+--
+ALTER TABLE `tbl_year`
+  ADD PRIMARY KEY (`year_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1254,6 +1414,18 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_arating`
   MODIFY `arating_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_audio`
+--
+ALTER TABLE `tbl_audio`
+  MODIFY `audio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `tbl_audio_year`
+--
+ALTER TABLE `tbl_audio_year`
+  MODIFY `audio_year_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_cast`
@@ -1295,7 +1467,7 @@ ALTER TABLE `tbl_language`
 -- AUTO_INCREMENT for table `tbl_movies`
 --
 ALTER TABLE `tbl_movies`
-  MODIFY `movies_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `movies_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_mov_cast`
@@ -1334,10 +1506,10 @@ ALTER TABLE `tbl_mov_studio`
   MODIFY `mov_studio_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `tbl_music`
+-- AUTO_INCREMENT for table `tbl_mov_year`
 --
-ALTER TABLE `tbl_music`
-  MODIFY `music_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `tbl_mov_year`
+  MODIFY `movie_year_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_studio`
@@ -1352,6 +1524,12 @@ ALTER TABLE `tbl_tv`
   MODIFY `tv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `tbl_tv_year`
+--
+ALTER TABLE `tbl_tv_year`
+  MODIFY `tv_year_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `tbl_urating`
 --
 ALTER TABLE `tbl_urating`
@@ -1362,6 +1540,12 @@ ALTER TABLE `tbl_urating`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_year`
+--
+ALTER TABLE `tbl_year`
+  MODIFY `year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
