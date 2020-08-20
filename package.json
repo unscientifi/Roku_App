@@ -9,7 +9,7 @@
   "author": "Shadia Ali",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.3"
+    "bcrypt": "^5.0.0"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
